@@ -2,7 +2,11 @@ package pl.coderslab.charity.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface Category extends JpaRepository<Long, Category> {
+import java.util.List;
+
+public interface Category extends JpaRepository<Category, Long> {
+
+    List<Category>findAllBy();
 
 
 }
