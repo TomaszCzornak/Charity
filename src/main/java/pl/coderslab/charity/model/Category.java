@@ -7,8 +7,10 @@ import javax.persistence.*;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(nullable = false)
     private Long id;
+    private String name;
+
 
     public Long getId() {
         return id;
@@ -17,8 +19,6 @@ public class Category {
     public void setId(Long id) {
         this.id = id;
     }
-
-    private String name;
 
     public String getName() {
         return name;

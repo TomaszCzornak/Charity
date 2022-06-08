@@ -1,27 +1,27 @@
-package pl.coderslab.charity;
+package pl.coderslab.charity.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.coderslab.charity.repository.Donation;
+import pl.coderslab.charity.repository.DonationRepo;
 
 import java.util.List;
-@Component
 @Controller
 public class HomeController {
 
-    private final Donation donationRepo;
-    public HomeController(Donation donationRepo) {
+    private final DonationRepo donationRepo;
+
+    @Autowired
+    public HomeController(DonationRepo donationRepo) {
         this.donationRepo = donationRepo;
     }
 
 
     @RequestMapping("/")
     public String homeAction(Model model){
-        List<Donation> donationList = donationRepo.findAllBy();
-        model.addAttribute("bagsCount", donationList);
+//        List<DonationRepo> donationRepoList = donationRepo.findAllBy();
+//        model.addAttribute("bagsCount", donationRepoList);
         return "index";
     }
 
