@@ -12,29 +12,30 @@ public class Donation {
     @Column(nullable = false)
     private Long id;
 
+    private Integer quantity;
+
+    @ManyToMany
+    private List<Category> categories;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Institution institution;
+
+    private String street;
+    private String city;
+    private String zipCode;
+    private LocalDate pickUpDate;
+    private LocalTime pickUpTime;
+    private String pickUpComment;
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    private Integer quantity;
-    @ManyToMany
-    private List<Category> categories;
-
-    @ManyToOne
-    private Institution institution;
-    private String street;
-    private String city;
-    private String zipCode;
-    private LocalDate pickUpdDate;
-    private LocalTime pickUpTime;
-    private String pickUpComment;
-
-    public Integer getQuantity() {
-        return quantity;
     }
 
     public void setQuantity(Integer quantity) {
@@ -82,11 +83,11 @@ public class Donation {
     }
 
     public LocalDate getPickUpdDate() {
-        return pickUpdDate;
+        return pickUpDate;
     }
 
     public void setPickUpdDate(LocalDate pickUpdDate) {
-        this.pickUpdDate = pickUpdDate;
+        this.pickUpDate = pickUpdDate;
     }
 
     public LocalTime getPickUpTime() {

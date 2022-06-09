@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Institution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(nullable = false)
     private Long id;
 
     public Long getId() {
