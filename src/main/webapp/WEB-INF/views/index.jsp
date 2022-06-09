@@ -109,35 +109,38 @@
 
     <!-- SLIDE 1 -->
     <div class="help--slides active" data-id="1">
-        <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
-            Możesz sprawdzić czym się zajmują.</p>
-
         <ul class="help--slides-items">
             <li>
+                <c:forEach items="${listOfInst}" var="i" begin="0" end="1">
                 <div class="col">
-                    <div class="title">Fundacja "Dbam o Zdrowie"</div>
-                    <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
-                </div>
+                <c:forEach items="${listOfInst}" var="j" varStatus="k">
 
-                <div class="col">
-                    <div class="title">Fundacja "A kogo"</div>
-                    <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>
-                </div>
-            </li>
 
-            <li>
-                <div class="col">
-                    <div class="title">Fundacja “Dla dzieci"</div>
-                    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>
+                    <div class="title">${j.name}</div>
+                    <div class="subtitle">${j.description}</div>
+                </c:forEach>
+
                 </div>
-                <div class="col">
-                    <div class="title">Fundacja “Bez domu”</div>
-                    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>
-                </div>
+                </c:forEach>
 
             </li>
+
+            <%--            <li>--%>
+            <%--                <div class="col">--%>
+            <%--                    <div class="title">Fundacja “Dla dzieci"</div>--%>
+            <%--                    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>--%>
+            <%--                </div>--%>
+            <%--                <div class="col">--%>
+            <%--                    <div class="title">Fundacja “Bez domu”</div>--%>
+            <%--                    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>--%>
+            <%--                </div>--%>
+
+            <%--            </li>--%>
 
         </ul>
+
+        <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
+            Możesz sprawdzić czym się zajmują.</p>
     </div>
 
 </section>
