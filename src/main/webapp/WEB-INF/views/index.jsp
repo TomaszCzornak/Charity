@@ -111,31 +111,40 @@
     <div class="help--slides active" data-id="1">
         <ul class="help--slides-items">
             <li>
-                <c:forEach items="${listOfInst}" var="i" begin="0" end="1">
-                <div class="col">
-                <c:forEach items="${listOfInst}" var="j" varStatus="k">
-
-
-                    <div class="title">${j.name}</div>
-                    <div class="subtitle">${j.description}</div>
+                <c:forEach items="${listOfInst}" var="i" begin="0" end="0">
+                    <div class="col">
+                        <c:forEach items="${listOfInst}" var="j" varStatus="k" step="2" begin="0">
+                            <div class="title"><c:out value="${j.name}"></c:out></div>
+                            <div class="subtitle"><c:out value="${j.description}"></c:out></div>
+        </c:forEach>
+                    </div>
                 </c:forEach>
+                    <c:forEach items="${listOfInst}" var="i" begin="0" end="0">
+                        <div class="col">
+                            <c:forEach items="${listOfInst}" var="j" varStatus="k" step="2" begin="1">
+                                <div class="title"><c:out value="${j.name}"></c:out></div>
+                                <div class="subtitle"><c:out value="${j.description}"></c:out></div>
+                            </c:forEach>
+    </div>
 
-                </div>
-                </c:forEach>
 
+        </c:forEach>
             </li>
 
-            <%--            <li>--%>
-            <%--                <div class="col">--%>
-            <%--                    <div class="title">Fundacja “Dla dzieci"</div>--%>
-            <%--                    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>--%>
-            <%--                </div>--%>
-            <%--                <div class="col">--%>
-            <%--                    <div class="title">Fundacja “Bez domu”</div>--%>
-            <%--                    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>--%>
-            <%--                </div>--%>
 
-            <%--            </li>--%>
+
+<%--            <li>--%>
+<%--                <c:forEach items="${listOfInst}" var="i" begin="0" end="1">--%>
+<%--                    <div class="col">--%>
+<%--                        <c:forEach items="${listOfInst}" var="j" varStatus="k" step="2">--%>
+<%--                            <div class="title"><c:out value="${j.name}"></c:out></div>--%>
+<%--                            <div class="subtitle"><c:out value="${j.description}"></c:out></div>--%>
+<%--                        </c:forEach>--%>
+
+<%--                    </div>--%>
+<%--                </c:forEach>--%>
+
+<%--            </li>--%>
 
         </ul>
 
