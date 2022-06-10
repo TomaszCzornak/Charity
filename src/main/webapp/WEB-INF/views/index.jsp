@@ -109,6 +109,8 @@
 
     <!-- SLIDE 1 -->
     <div class="help--slides active" data-id="1">
+        <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
+            Możesz sprawdzić czym się zajmują.</p>
         <ul class="help--slides-items">
             <li>
                 <c:forEach items="${listOfInst}" var="i" begin="0" end="0">
@@ -148,8 +150,7 @@
 
         </ul>
 
-        <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
-            Możesz sprawdzić czym się zajmują.</p>
+
     </div>
 
 </section>

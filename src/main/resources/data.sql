@@ -12,6 +12,8 @@ insert into institution(name, description) values('Fundacja “Dla dzieci"', 'Ce
 ');
 insert into institution(name, description) values('Fundacja “Bez domu”
 ', 'Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania');
+insert into institution(name, description) values('Fundacja “Siemacha”
+', 'Cel i misja: Pomoc dla młodych i bezdomnych');
 
 insert into donation(city, pick_up_comment, pick_up_time, pick_up_date, quantity, street, zip_code, institution_id)
 values ('Kraków', 'rano', 080000, 20220609, 1, 'Geremka', '30-389', 1);
