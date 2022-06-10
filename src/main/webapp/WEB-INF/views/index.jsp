@@ -112,41 +112,33 @@
         <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
             Możesz sprawdzić czym się zajmują.</p>
         <ul class="help--slides-items">
-            <li>
-                <c:forEach items="${listOfInst}" var="i" begin="0" end="0">
+            <c:forEach items="${listOfInst}" var="i" varStatus="status">
+                <c:if test="${status.index%2==0}">
+                    <li>
+
                     <div class="col">
-                        <c:forEach items="${listOfInst}" var="j" varStatus="k" step="2" begin="0">
-                            <div class="title"><c:out value="${j.name}"></c:out></div>
-                            <div class="subtitle"><c:out value="${j.description}"></c:out></div>
-        </c:forEach>
+                        <div class="title"><c:out value="${i.name}"></c:out></div>
+                        <div class="subtitle"><c:out value="${i.description}"></c:out></div>
                     </div>
-                </c:forEach>
-                    <c:forEach items="${listOfInst}" var="i" begin="0" end="0">
-                        <div class="col">
-                            <c:forEach items="${listOfInst}" var="j" varStatus="k" step="2" begin="1">
-                                <div class="title"><c:out value="${j.name}"></c:out></div>
-                                <div class="subtitle"><c:out value="${j.description}"></c:out></div>
-                            </c:forEach>
-    </div>
+                </c:if>
+                <c:if test="${status.index%2!=0}">
+
+                    <div class="col">
+                        <div class="title"><c:out value="${i.name}"></c:out></div>
+                        <div class="subtitle"><c:out value="${i.description}"></c:out></div>
+                    </div>
 
 
-        </c:forEach>
-            </li>
+                    </li>
+                </c:if>
+            </c:forEach>
+            <c:if test="${listOfInst.size()%2!=0}">
+                <div class="col" style="visibility: hidden">
 
+                </div>
+                </li>
+            </c:if>
 
-
-<%--            <li>--%>
-<%--                <c:forEach items="${listOfInst}" var="i" begin="0" end="1">--%>
-<%--                    <div class="col">--%>
-<%--                        <c:forEach items="${listOfInst}" var="j" varStatus="k" step="2">--%>
-<%--                            <div class="title"><c:out value="${j.name}"></c:out></div>--%>
-<%--                            <div class="subtitle"><c:out value="${j.description}"></c:out></div>--%>
-<%--                        </c:forEach>--%>
-
-<%--                    </div>--%>
-<%--                </c:forEach>--%>
-
-<%--            </li>--%>
 
         </ul>
 
