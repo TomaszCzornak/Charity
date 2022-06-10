@@ -128,8 +128,26 @@
                                 <div class="subtitle"><c:out value="${j.description}"></c:out></div>
                             </c:forEach>
     </div>
+
+
         </c:forEach>
             </li>
+
+
+
+<%--            <li>--%>
+<%--                <c:forEach items="${listOfInst}" var="i" begin="0" end="1">--%>
+<%--                    <div class="col">--%>
+<%--                        <c:forEach items="${listOfInst}" var="j" varStatus="k" step="2">--%>
+<%--                            <div class="title"><c:out value="${j.name}"></c:out></div>--%>
+<%--                            <div class="subtitle"><c:out value="${j.description}"></c:out></div>--%>
+<%--                        </c:forEach>--%>
+
+<%--                    </div>--%>
+<%--                </c:forEach>--%>
+
+<%--            </li>--%>
+
         </ul>
 
 
