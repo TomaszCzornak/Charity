@@ -14,8 +14,8 @@ public class Donation {
 
     private Integer quantity;
 
-    @ManyToMany
-    private List<Category> categories;
+    @ManyToOne
+    private Category category;
     @ManyToOne(cascade = CascadeType.ALL)
     private Institution institution;
 
@@ -25,6 +25,15 @@ public class Donation {
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
     private String pickUpComment;
+    private String phoneNumber;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public Integer getQuantity() {
         return quantity;
@@ -42,12 +51,20 @@ public class Donation {
         this.quantity = quantity;
     }
 
-    public List<Category> getCategories() {
-        return categories;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public LocalDate getPickUpDate() {
+        return pickUpDate;
+    }
+
+    public void setPickUpDate(LocalDate pickUpDate) {
+        this.pickUpDate = pickUpDate;
     }
 
     public Institution getInstitution() {
