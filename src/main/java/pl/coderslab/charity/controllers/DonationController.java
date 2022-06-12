@@ -75,9 +75,9 @@ public class DonationController {
 
 
         Donation donation = new Donation();
-//        donation.setCategory((Category) httpSession.getAttribute("category"));
+        donation.setCategory((Category) httpSession.getAttribute("category")); //TODO
         donation.setQuantity((Integer) httpSession.getAttribute("numberOfBags"));
-        donation.setInstitution((Institution) httpSession.getAttribute("organization"));
+        donation.setInstitution((Institution) httpSession.getAttribute("organization")); //TODO
         donation.setStreet((String) httpSession.getAttribute("address"));
         donation.setCity((String) httpSession.getAttribute("city"));
         donation.setZipCode((String) httpSession.getAttribute("zipCode"));
