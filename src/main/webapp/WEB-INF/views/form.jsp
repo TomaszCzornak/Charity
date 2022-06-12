@@ -79,10 +79,11 @@
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
+                <form:form modelAttribute="category">
                 <c:forEach items="${categories}" var="i" varStatus="status">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <form:radiobutton path="categories"
+                            <form:radiobutton path="category"
                                               items="${categories}"
                                               value="${i.name}"
                                               name="categorySelected"/>
@@ -92,7 +93,9 @@
                             >
                         </label>
                     </div>
+
                 </c:forEach>
+                </form:form>
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn next-step">Dalej</button>
                 </div>
