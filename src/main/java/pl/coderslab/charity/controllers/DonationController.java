@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import pl.coderslab.charity.repository.CategoryRepo;
 import pl.coderslab.charity.repository.DonationRepo;
 import pl.coderslab.charity.repository.InstitutionRepo;
 
@@ -15,16 +16,19 @@ public class DonationController {
 
     private final DonationRepo donationRepo;
     private final InstitutionRepo institutionRepo;
+    private final CategoryRepo categoryRepo;
 
-    public DonationController(DonationRepo donationRepo, InstitutionRepo institutionRepo) {
+    public DonationController(DonationRepo donationRepo, InstitutionRepo institutionRepo, CategoryRepo categoryRepo) {
         this.donationRepo = donationRepo;
         this.institutionRepo = institutionRepo;
+        this.categoryRepo = categoryRepo;
     }
 
 
     @GetMapping("/form")
     public String donationForm(Model model){
         model.addAttribute("listOfInst", institutionRepo.findAll());
+        model.addAttribute("categories", categoryRepo.findAll());
         return "form";
     }
 
