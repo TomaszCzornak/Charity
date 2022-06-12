@@ -32,5 +32,8 @@ public class HomeController {
         return "index";
     }
 
-
+    @RequestMapping("/steps")
+    public String steps(){
+        return "index"+"#steps";
+    }
 }
