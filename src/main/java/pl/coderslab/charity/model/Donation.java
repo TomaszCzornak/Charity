@@ -14,7 +14,7 @@ public class Donation {
 
     private Integer quantity;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Category category;
     @ManyToOne(cascade = CascadeType.ALL)
     private Institution institution;

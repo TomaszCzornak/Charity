@@ -36,18 +36,19 @@ public class DonationController {
         return "form";
     }
 
-    @ResponseBody
     @PostMapping("/form")
-    public String donationInForm(HttpServletRequest request, Model model, @ModelAttribute("category") Category category, @ModelAttribute("listOfInst") Institution institution){
+    public String donationInForm(HttpServletRequest request, Model model){
         HttpSession httpSession = request.getSession();
 
-        category.setName(category.getName());
+        Category category = new Category();
+        category.setName(request.getParameter("categorySelected"));
         httpSession.setAttribute("category", category);
 
         Integer numberOfBags = Integer.parseInt(request.getParameter("bags"));
         httpSession.setAttribute("numberOfBags", numberOfBags);
 
-        institution.setName(institution.getName());
+        Institution institution = new Institution();
+        institution.setName(request.getParameter("organization"));
         httpSession.setAttribute("organization", institution);
 
         String street = request.getParameter("address");
@@ -56,7 +57,7 @@ public class DonationController {
         String city = request.getParameter("city");
         httpSession.setAttribute("city", city);
 
-        String zipCode = request.getParameter("postCode");
+        String zipCode = request.getParameter("postcode");
         httpSession.setAttribute("zipCode", zipCode);
 
         String phone = request.getParameter("phone");
@@ -73,15 +74,16 @@ public class DonationController {
 
 
         Donation donation = new Donation();
-        donation.setCategory((Category) httpSession.getAttribute("category"));
+        donation.setCategory(category);
         donation.setQuantity((Integer) httpSession.getAttribute("numberOfBags"));
-        donation.setInstitution((Institution) httpSession.getAttribute("organization"));
+        donation.setInstitution(institution);
         donation.setStreet((String) httpSession.getAttribute("address"));
         donation.setCity((String) httpSession.getAttribute("city"));
         donation.setZipCode((String) httpSession.getAttribute("zipCode"));
         donation.setPhoneNumber((String) httpSession.getAttribute("phone"));
         donation.setPickUpDate(LocalDate.parse((String) httpSession.getAttribute("data")));
-        donation.setPickUpTime(LocalTime.from(LocalDate.parse((String) httpSession.getAttribute("time"))));
+        LocalTime lt = LocalTime.parse(time);
+        donation.setPickUpTime(lt);
         donation.setPickUpComment((String) httpSession.getAttribute("more_info"));
 
         donationRepo.save(donation);

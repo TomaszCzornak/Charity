@@ -79,11 +79,10 @@
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
-                <form:form modelAttribute="category">
                 <c:forEach items="${categories}" var="i" varStatus="status">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <form:radiobutton path="category"
+                            <form:radiobutton path="categories"
                                               items="${categories}"
                                               value="${i.name}"
                                               name="categorySelected"/>
@@ -93,9 +92,7 @@
                             >
                         </label>
                     </div>
-
                 </c:forEach>
-                </form:form>
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn next-step">Dalej</button>
                 </div>
@@ -198,7 +195,7 @@
             <!-- STEP 6 -->
             <div data-step="5">
                 <h3>Podsumowanie Twojej darowizny</h3>
-                <c:forEach items="${summing}" var="donatedItem" varStatus="status">
+                <c:forEach var="donatedItem" items="${summing}" >
 
                 <div class="summary">
                     <div class="form-section">
@@ -207,14 +204,14 @@
                             <li>
                                 <span class="icon icon-bag"></span>
                                 <span class="summary--text"
-                                >${donatedItem.quantity} ${donatedItem.category}</span
+                                >${donatedItem.quantity} ${donatedItem.category.name}</span
                                 >
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
                                 <span class="summary--text"
-                                >Dla fundacji ${donatedItem.institution}</span
+                                >Dla fundacji ${donatedItem.institution.name}</span
                                 >
                             </li>
                         </ul>
@@ -254,6 +251,7 @@
         <%--    STEP 4--%>
 
     </div>
+</section>
 
 <div class="form--steps-instructions">
     <div class="form--steps-container">
@@ -273,7 +271,6 @@
         <p data-step="4">Podaj adres oraz termin odbioru rzeczy.</p>
     </div>
 </div>
-    </section>
 
     <footer>
     <div class="contact">
