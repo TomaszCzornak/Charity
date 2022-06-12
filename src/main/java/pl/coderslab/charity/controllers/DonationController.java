@@ -2,9 +2,7 @@ package pl.coderslab.charity.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.model.Category;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.model.Institution;
@@ -40,17 +38,17 @@ public class DonationController {
 
     @ResponseBody
     @PostMapping("/form")
-    public String donationInForm(HttpServletRequest request, Model model){
+    public String donationInForm(HttpServletRequest request, Model model, @ModelAttribute("category") Category category, @ModelAttribute("listOfInst") Institution institution){
         HttpSession httpSession = request.getSession();
 
-        String category = request.getParameter("categorySelected");
+        category.setName(category.getName());
         httpSession.setAttribute("category", category);
 
         Integer numberOfBags = Integer.parseInt(request.getParameter("bags"));
         httpSession.setAttribute("numberOfBags", numberOfBags);
 
-        String organization = request.getParameter("organization");
-        httpSession.setAttribute("organization", organization);
+        institution.setName(institution.getName());
+        httpSession.setAttribute("organization", institution);
 
         String street = request.getParameter("address");
         httpSession.setAttribute("address", street);
@@ -75,7 +73,7 @@ public class DonationController {
 
 
         Donation donation = new Donation();
-//        donation.setCategory((Category) httpSession.getAttribute("category"));
+        donation.setCategory((Category) httpSession.getAttribute("category"));
         donation.setQuantity((Integer) httpSession.getAttribute("numberOfBags"));
         donation.setInstitution((Institution) httpSession.getAttribute("organization"));
         donation.setStreet((String) httpSession.getAttribute("address"));
