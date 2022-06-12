@@ -99,64 +99,24 @@
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
-
+                <c:forEach var="item" items="${categories}">
                 <div class="form-group form-group--checkbox">
                     <label>
-                        <form:checkboxes path="categories"
+                        <form:radiobutton path="categories"
                                          items="${categories}" itemLabel="name" itemValue="id"/>/>
                             <%--    <span class="checkbox"></span>--%>
                         <span class="description"
-                        >ubrania, które nadają się do ponownego użycia</span>
+                        >${item.name}</span>
                     </label>
                 </div>
 
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input
-                                type="checkbox"
-                                name="categories"
-                                value="ubrania_zużyte"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="description">ubrania, do wyrzucenia</span>
-                    </label>
-                </div>
-
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="checkbox"
-                               name="categories"
-                               value="zabawki"/>
-                        <span class="checkbox"></span>
-                        <span class="description">zabawki</span>
-                    </label>
-                </div>
-
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="checkbox"
-                               name="categories"
-                               value="książki"/>
-                        <span class="checkbox"></span>
-                        <span class="description">książki</span>
-                    </label>
-                </div>
-
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="checkbox"
-                               name="categories"
-                               value="inne"/>
-                        <span class="checkbox"></span>
-                        <span class="description">inne</span>
-                    </label>
-                </div>
-
+                </c:forEach>
+                </form:form>
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn next-step">Dalej</button>
                 </div>
             </div>
-        </form:form>
+
 
         <!-- STEP 2 -->
         <%--@elvariable id="donation" type="pl.coderslab.charity.model.Donation"--%>

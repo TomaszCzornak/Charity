@@ -33,13 +33,13 @@ public class DonationController {
     @GetMapping("/form")
     public String donationForm(Model model){
         model.addAttribute("listOfInst", institutionRepo.findAll());
-        model.addAttribute("categories", new Donation());
+        model.addAttribute("categories", donationRepo.findAll());
         return "form";
     }
 
     @ResponseBody
     @PostMapping("/form")
-    public String[] donationInForm(HttpServletRequest request, Donation donation, BindingResult bindingResult){
+    public String[] donationInForm(HttpServletRequest request, @ModelAttribute("donation") Donation donation){
         String [] categoryToDonate = request.getParameterValues("categories");
 //        Integer numberOfBags = request.getParameter("bags");
         donationRepo.save(donation);
