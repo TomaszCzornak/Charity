@@ -79,23 +79,53 @@
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
-                <c:forEach items="${categories}" var="i" varStatus="status">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <form:radiobutton path="categories"
-                                              items="${categories}"
-                                              value="${i.name}"
-                                              name="categorySelected"/>
+                            <input
+                                    type="radio"
+                                    name="categories"
+                                    value="clothes-to-use"/>
                             <span class="checkbox radio"></span>
                             <span class="description"
-                            >${i.name}</span
+                            >ubrania, które nadają się do ponownego użycia</span
                             >
                         </label>
                     </div>
-                </c:forEach>
-                <div class="form-group form-group--buttons">
-                    <button type="button" class="btn next-step">Dalej</button>
+                <div class="form-group form-group--checkbox">
+                    <label>
+                        <input type="radio" name="categories" value="clothes-useless" />
+                        <span class="checkbox radio"></span>
+                        <span class="description"
+                        >ubrania, do wyrzucenia</span
+                        >
+                    </label>
                 </div>
+            <div class="form-group form-group--checkbox">
+                <label>
+                    <input type="radio" name="categories" value="toys" />
+                    <span class="checkbox radio"></span>
+                    <span class="description"
+                    >zabawki</span>
+                </label>
+            </div>
+            <div class="form-group form-group--checkbox">
+                <label>
+                    <input type="radio" name="categories" value="books" />
+                    <span class="checkbox radio"></span>
+                    <span class="description"
+                    >książki</span>
+                </label>
+            </div>
+            <div class="form-group form-group--checkbox">
+                <label>
+                    <input type="radio" name="categories" value="other" />
+                    <span class="checkbox radio"></span>
+                    <span class="description">inne</span>
+                </label>
+            </div>
+            <div class="form-group form-group--buttons">
+                <button type="button" class="btn next-step">Dalej</button>
+            </div>
             </div>
             <!-- STEP 2 -->
             <div data-step="2">

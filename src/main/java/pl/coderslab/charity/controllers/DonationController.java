@@ -32,7 +32,6 @@ public class DonationController {
     @GetMapping("/form")
     public String donationForm(Model model){
         model.addAttribute("listOfInst", institutionRepo.findAll());
-        model.addAttribute("categories", categoryRepo.findAll());
         return "form";
     }
 
