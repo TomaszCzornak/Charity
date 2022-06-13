@@ -12,7 +12,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+
+    <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
 </head>
 <body>
 <!-- STEP 6 -->
@@ -20,6 +25,7 @@
 
 <div data-step="5">
     <h3>Podsumowanie Twojej darowizny</h3>
+    <form action="/summary" method="post">
 
     <div class="summary">
         <div class="form-section">
@@ -28,13 +34,13 @@
                 <li>
                     <span class="icon icon-bag"></span>
                     <span class="summary--text"
-                    >4 worki ubrań w dobrym stanie dla dzieci</span>
+                    >${summary.quantity} </span>
                 </li>
 
                 <li>
                     <span class="icon icon-hand"></span>
                     <span class="summary--text"
-                    >Dla fundacji "Mam marzenie" w Warszawie</span
+                    >${summary.institution}</span
                     >
                 </li>
             </ul>
@@ -44,10 +50,10 @@
             <div class="form-section--column">
                 <h4>Adres odbioru:</h4>
                 <ul>
-                    <li>Prosta 51</li>
-                    <li>Warszawa</li>
-                    <li>99-098</li>
-                    <li>123 456 789</li>
+                    <li>${summary.street}</li>
+                    <li>${summary.city}</li>
+                    <li>${summary.postcode}</li>
+                    <li>${summary.phone}</li>
                 </ul>
             </div>
 
@@ -61,6 +67,9 @@
             </div>
         </div>
     </div>
-
+    <div class="form-group form-group--buttons">
+        <button type="button" class="btn prev-step">Wstecz</button>
+        <button type="submit" class="btn">Potwierdzam</button>
+    </div>
 </body>
 </html>

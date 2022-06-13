@@ -14,6 +14,7 @@ import pl.coderslab.charity.repository.DonationRepo;
 import pl.coderslab.charity.repository.InstitutionRepo;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -40,9 +41,23 @@ public class DonationController {
 
     @PostMapping("/form")
     public String donationInForm(HttpServletRequest request, @ModelAttribute("donation") Donation donation){
-
-        return "/";
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("donation", donation);
+        return "redirect:/summary";
     }
+
+    @GetMapping("/summary")
+    public String summingUp(HttpServletRequest request, Model model){
+        model.addAttribute("summary", request.getAttribute("donation"));
+        return "summary";
+    }
+    @PostMapping("/summary")
+    public String saveSumming(Donation donation){
+        donationRepo.save(donation);
+        return "summary";
+    }
+
+
     @ModelAttribute("categories")
     public List<Category> findAll(){
         return categoryRepo.findAll();
