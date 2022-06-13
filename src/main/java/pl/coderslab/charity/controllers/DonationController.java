@@ -48,13 +48,16 @@ public class DonationController {
 
     @GetMapping("/summary")
     public String summingUp(HttpServletRequest request, Model model){
-        model.addAttribute("summary", request.getAttribute("donation"));
+        HttpSession httpSession = request.getSession();
+        model.addAttribute("summary", httpSession.getAttribute("donation"));
         return "summary";
     }
     @PostMapping("/summary")
-    public String saveSumming(Donation donation){
+    public String saveSumming(HttpServletRequest request){
+        HttpSession httpSession = request.getSession();
+        Donation donation = (Donation) httpSession.getAttribute("donation");
         donationRepo.save(donation);
-        return "summary";
+        return "form-confirmation";
     }
 
 

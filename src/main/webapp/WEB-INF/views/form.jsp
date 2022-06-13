@@ -129,7 +129,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <input type="number" name="bags" step="1" min="1"/>
+                        <input type="number" name="quantity" step="1" min="1"/>
                     </label>
                 </div>
 
@@ -148,7 +148,7 @@
 
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <input type="radio" name="organization" value="${i.id}"/>
+                            <input type="radio" name="institution" value="${i.id}"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
 
@@ -179,7 +179,7 @@
                     <div class="form-section--column">
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Ulica <input type="text" name="address" /> </label>
+                            <label> Ulica <input type="text" name="street" /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
@@ -189,13 +189,13 @@
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <input type="text" name="postcode" />
+                                Kod pocztowy <input type="text" name="zipCode" />
                             </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Numer telefonu <input type="phone" name="phone" />
+                                Numer telefonu <input type="phone" name="phoneNumber" />
                             </label>
                         </div>
                     </div>
@@ -203,17 +203,17 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <input type="date" name="data" /> </label>
+                            <label> Data <input type="date" name="pickUpDate" /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <input type="time" name="time" /> </label>
+                            <label> Godzina <input type="time" name="pickUpTime" /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
-                                <textarea name="more_info" rows="5"></textarea>
+                                <textarea name="pickUpComment" rows="5"></textarea>
                             </label>
                         </div>
                     </div>

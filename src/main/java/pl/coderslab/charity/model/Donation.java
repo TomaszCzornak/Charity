@@ -18,7 +18,7 @@ public class Donation {
 
     @ManyToMany
     private List<Category> categories;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Institution institution;
 
     private String street;
@@ -28,6 +28,15 @@ public class Donation {
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
     private String pickUpComment;
+    private String phoneNumber;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public Integer getQuantity() {
         return quantity;

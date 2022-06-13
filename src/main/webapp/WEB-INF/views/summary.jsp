@@ -25,7 +25,7 @@
 
 <div data-step="5">
     <h3>Podsumowanie Twojej darowizny</h3>
-    <form action="/summary" method="post">
+<form:form modelAttribute="donation" method="post">
 
     <div class="summary">
         <div class="form-section">
@@ -34,13 +34,13 @@
                 <li>
                     <span class="icon icon-bag"></span>
                     <span class="summary--text"
-                    >${summary.quantity} </span>
+                    >${summary.quantity} worki</span>
                 </li>
 
                 <li>
                     <span class="icon icon-hand"></span>
                     <span class="summary--text"
-                    >${summary.institution}</span
+                    >${summary.institution.name}</span
                     >
                 </li>
             </ul>
@@ -52,8 +52,8 @@
                 <ul>
                     <li>${summary.street}</li>
                     <li>${summary.city}</li>
-                    <li>${summary.postcode}</li>
-                    <li>${summary.phone}</li>
+                    <li>${summary.zipCode}</li>
+                    <li>${summary.phoneNumber}</li>
                 </ul>
             </div>
 
@@ -71,5 +71,7 @@
         <button type="button" class="btn prev-step">Wstecz</button>
         <button type="submit" class="btn">Potwierdzam</button>
     </div>
+    </form:form>
+
 </body>
 </html>

@@ -1,10 +1,11 @@
 
-# create charity_donation CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- create database charity_donation CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-
-insert into category(name) values ('ubrania');
+insert into category(name) values ('ubrania, które nadają się do ponownego użycia');
+insert into category(name) values ('ubrania, do wyrzucenia');
 insert into category(name) values ('zabawki');
-insert into category(name) values ('sprzęt i inne');
+insert into category(name) values ('książki');
+insert into category(name) values ('inne');
 
 insert into institution(name, description) values('Fundacja "Dbam o Zdrowie"', 'Cel i misja: Pomoc dzieciom z ubogich rodzin.');
 insert into institution(name, description) values('Fundacja "A kogo"', 'Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.');
