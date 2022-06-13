@@ -40,7 +40,7 @@ public class DonationController {
         HttpSession httpSession = request.getSession();
 
         Category category = new Category();
-        category.setName(request.getParameter("categorySelected"));
+        category.setName(request.getParameter("categories"));
         httpSession.setAttribute("category", category);
 
         Integer numberOfBags = Integer.parseInt(request.getParameter("bags"));
@@ -48,6 +48,7 @@ public class DonationController {
 
         Institution institution = new Institution();
         institution.setName(request.getParameter("organization"));
+        institution.setDescription(request.getParameter("organization"));
         httpSession.setAttribute("organization", institution);
 
         String street = request.getParameter("address");
