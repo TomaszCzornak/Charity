@@ -22,12 +22,10 @@ public class DonationController {
 
     private final DonationRepo donationRepo;
     private final InstitutionRepo institutionRepo;
-    private final CategoryRepo categoryRepo;
 
-    public DonationController(DonationRepo donationRepo, InstitutionRepo institutionRepo, CategoryRepo categoryRepo) {
+    public DonationController(DonationRepo donationRepo, InstitutionRepo institutionRepo) {
         this.donationRepo = donationRepo;
         this.institutionRepo = institutionRepo;
-        this.categoryRepo = categoryRepo;
     }
 
 

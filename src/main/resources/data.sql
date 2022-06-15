@@ -1,5 +1,6 @@
 
--- create database charity_donation CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+# create charity_donation CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
 
 insert into category(name) values ('ubrania, które nadają się do ponownego użycia');
 insert into category(name) values ('ubrania, do wyrzucenia');
