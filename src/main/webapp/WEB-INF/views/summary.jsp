@@ -10,15 +10,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<html>
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Document</title>
-
-    <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
-</head>
+<html lang="pl">
 <body>
 <header class="header--form-page">
     <nav class="container container--70">
@@ -71,58 +63,104 @@
 </header>
 <!-- STEP 6 -->
 <%--@elvariable id="donation" type="pl.coderslab.charity.model.Donation"--%>
+<section class="form--steps">
+<form method="post">
+    <div style="display: block">
+        <h3>Podsumowanie Twojej darowizny</h3>
 
-<div data-step="5">
-    <h3>Podsumowanie Twojej darowizny</h3>
-<form:form modelAttribute="donation" method="post">
-
-    <div class="summary">
-        <div class="form-section">
-            <h4>Oddajesz:</h4>
-            <ul>
-                <li>
-                    <span class="icon icon-bag"></span>
-                    <span class="summary--text"
-                    >${summary.quantity} worki</span>
-                </li>
-
-                <li>
-                    <span class="icon icon-hand"></span>
-                    <span class="summary--text"
-                    >${summary.institution.name}</span
-                    >
-                </li>
-            </ul>
-        </div>
-
-        <div class="form-section form-section--columns">
-            <div class="form-section--column">
-                <h4>Adres odbioru:</h4>
+        <div class="summary">
+            <div class="form-section">
+                <h4>Oddajesz:</h4>
                 <ul>
-                    <li>${summary.street}</li>
-                    <li>${summary.city}</li>
-                    <li>${summary.zipCode}</li>
-                    <li>${summary.phoneNumber}</li>
+                    <li>
+                        <span class="icon icon-bag"></span>
+                        <span class="summary--text"
+                        >${summary.quantity} worki</span>
+                    </li>
+
+                    <li>
+                        <span class="icon icon-hand"></span>
+                        <span class="summary--text"
+                        >${summary.institution.name}</span
+                        >
+                    </li>
                 </ul>
             </div>
 
-            <div class="form-section--column">
-                <h4>Termin odbioru:</h4>
-                <ul>
-                    <li>13/12/2018</li>
-                    <li>15:40</li>
-                    <li>Brak uwag</li>
-                </ul>
+            <div class="form-section form-section--columns">
+                <div class="form-section--column">
+                    <h4>Adres odbioru:</h4>
+                    <ul>
+                        <li>${summary.street}</li>
+                        <li>${summary.city}</li>
+                        <li>${summary.zipCode}</li>
+                        <li>${summary.phoneNumber}</li>
+                    </ul>
+                </div>
+
+                <div class="form-section--column">
+                    <h4>Termin odbioru:</h4>
+                    <ul>
+                        <li>13/12/2018</li>
+                        <li>15:40</li>
+                        <li>Brak uwag</li>
+                    </ul>
+                </div>
             </div>
         </div>
+        <div class="form-group form-group--buttons">
+            <button type="button" class="btn prev-step">Wstecz</button>
+            <button type="submit" class="btn">Potwierdzam</button>
+        </div>
+
     </div>
-    <div class="form-group form-group--buttons">
-        <button type="button" class="btn prev-step">Wstecz</button>
-        <button type="submit" class="btn">Potwierdzam</button>
-    </div>
-    </div>
-    </form:form>
+</form>
 </section>
 
+<footer>
+    <div class="contact">
+        <h2>Skontaktuj się z nami</h2>
+        <h3>Formularz kontaktowy</h3>
+        <form class="form--contact">
+            <div class="form-group form-group--50">
+                <input type="text" name="name" placeholder="Imię" />
+            </div>
+            <div class="form-group form-group--50">
+                <input type="text" name="surname" placeholder="Nazwisko" />
+            </div>
+
+            <div class="form-group">
+            <textarea
+                    name="message"
+                    placeholder="Wiadomość"
+                    rows="1"
+            ></textarea>
+            </div>
+
+            <button class="btn" type="submit">Wyślij</button>
+        </form>
+    </div>
+    <div class="bottom-line">
+        <span class="bottom-line--copy">Copyright &copy; 2018</span>
+        <div class="bottom-line--icons">
+            <a href="#" class="btn btn--small"
+            ><img src="/resources/images/icon-facebook.svg"
+            /></a>
+            <a href="#" class="btn btn--small"
+            ><img src="/resources/images/icon-instagram.svg"
+            /></a>
+        </div>
+    </div>
+</footer>
+
+<script src="/resources/js/app.js"></script>
 </body>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+
+    <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
+</head>
 </html>
