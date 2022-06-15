@@ -72,70 +72,64 @@
 </header>
 
 <section class="form--steps">
+    <div class="form--steps-instructions">
+        <div class="form--steps-container">
+            <h3>Ważne!</h3>
+            <p data-step="1" class="active">
+                Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
+                wiedzieć komu najlepiej je przekazać.
+            </p>
+            <p data-step="2">
+                Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
+                wiedzieć komu najlepiej je przekazać.
+            </p>
+            <p data-step="3">
+                Wybierz jedną, do
+                której trafi Twoja przesyłka.
+            </p>
+            <p data-step="4">Podaj adres oraz termin odbioru rzeczy.</p>
+        </div>
+    </div>
+
     <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
+        <%--@elvariable id="donation" type="pl.coderslab.charity.model.Donation"--%>
 
-        <form action="/form" method="post">
+        <form:form modelAttribute="donation" method="post">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
+                <c:forEach var="item" items="${categories}">
                     <div class="form-group form-group--checkbox">
                         <label>
                             <input
-                                    type="radio"
+                                    type="checkbox"
                                     name="categories"
-                                    value="clothes-to-use"/>
-                            <span class="checkbox radio"></span>
-                            <span class="description"
-                            >ubrania, które nadają się do ponownego użycia</span
+                                    value="${item.id}"
+                            />
+                            <span class="checkbox"></span>
+                            <span class="description">${item.name}</span
                             >
                         </label>
                     </div>
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="radio" name="categories" value="clothes-useless" />
-                        <span class="checkbox radio"></span>
-                        <span class="description"
-                        >ubrania, do wyrzucenia</span
-                        >
-                    </label>
+
+                </c:forEach>
+                <div class="form-group form-group--buttons">
+                    <button type="button" class="btn next-step">Dalej</button>
                 </div>
-            <div class="form-group form-group--checkbox">
-                <label>
-                    <input type="radio" name="categories" value="toys" />
-                    <span class="checkbox radio"></span>
-                    <span class="description"
-                    >zabawki</span>
-                </label>
             </div>
-            <div class="form-group form-group--checkbox">
-                <label>
-                    <input type="radio" name="categories" value="books" />
-                    <span class="checkbox radio"></span>
-                    <span class="description"
-                    >książki</span>
-                </label>
-            </div>
-            <div class="form-group form-group--checkbox">
-                <label>
-                    <input type="radio" name="categories" value="other" />
-                    <span class="checkbox radio"></span>
-                    <span class="description">inne</span>
-                </label>
-            </div>
-            <div class="form-group form-group--buttons">
-                <button type="button" class="btn next-step">Dalej</button>
-            </div>
-            </div>
+
+
             <!-- STEP 2 -->
+            <%--@elvariable id="donation" type="pl.coderslab.charity.model.Donation"--%>
+
             <div data-step="2">
                 <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
 
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <input type="number"
-                               name="bags" step="1" min="1"/>
+                        <input type="number" name="quantity" step="1" min="1"/>
                     </label>
                 </div>
 
@@ -144,14 +138,17 @@
                     <button type="button" class="btn next-step">Dalej</button>
                 </div>
             </div>
+
             <%--            STEP4--%>
+            <%--@elvariable id="institution" type="pl.coderslab.charity.model.Institution"--%>
+
             <div data-step="3">
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
                 <c:forEach items="${listOfInst}" var="i" varStatus="status">
 
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <input type="radio" name="organization" value="old"/>
+                            <input type="radio" name="institution" value="${i.id}"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
 
@@ -170,7 +167,11 @@
                     <button type="button" class="btn next-step">Dalej</button>
                 </div>
             </div>
+
+
             <!-- STEP 5 -->
+            <%--@elvariable id="donation" type="pl.coderslab.charity.model.Donation"--%>
+
             <div data-step="4">
                 <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
 
@@ -178,22 +179,23 @@
                     <div class="form-section--column">
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Ulica <input type="text" name="address"/> </label>
+                            <label> Ulica <input type="text" name="street" /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Miasto <input type="text" name="city"/> </label>
-                        </div>
-
-                        <div class="form-group form-group--inline">
-                            <label>
-                                Kod pocztowy <input type="text" name="postcode"/>
+                            <label> Miasto <input type="text" name="city" /> </label>
                             </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Numer telefonu <input type="phone" name="phone"/>
+                                Kod pocztowy <input type="text" name="zipCode" />
+                            </label>
+                        </div>
+
+                        <div class="form-group form-group--inline">
+                            <label>
+                                Numer telefonu <input type="phone" name="phoneNumber" />
                             </label>
                         </div>
                     </div>
@@ -201,81 +203,29 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <input type="date" name="data"/> </label>
+                            <label> Data <input type="date" name="pickUpDate" /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <input type="time" name="time"/> </label>
+                            <label> Godzina <input type="time" name="pickUpTime" /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
-                                <textarea name="more_info" rows="5"></textarea>
+                                <textarea name="pickUpComment" rows="5"></textarea>
                             </label>
                         </div>
                     </div>
                 </div>
-                <div class="form-group form-group--buttons">
-                    <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="button" class="btn next-step">Dalej</button>
-                </div>
+            <div class="form-group form-group--buttons">
+                <button type="button" class="btn prev-step">Wstecz</button>
+                <button type="submit" class="btn">Potwierdzam</button>
             </div>
 
-            <!-- STEP 6 -->
-            <div data-step="5">
-                <h3>Podsumowanie Twojej darowizny</h3>
-                <c:forEach var="donatedItem" items="${summing}" >
 
-                <div class="summary">
-                    <div class="form-section">
-                        <h4>Oddajesz:</h4>
-                        <ul>
-                            <li>
-                                <span class="icon icon-bag"></span>
-                                <span class="summary--text"
-                                >${donatedItem.quantity} ${donatedItem.category.name}</span
-                                >
-                            </li>
-
-                            <li>
-                                <span class="icon icon-hand"></span>
-                                <span class="summary--text"
-                                >Dla fundacji ${donatedItem.institution.name}</span
-                                >
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="form-section form-section--columns">
-                        <div class="form-section--column">
-                            <h4>Adres odbioru:</h4>
-                            <ul>
-                                <li>${donatedItem.street}</li>
-                                <li>${donatedItem.city}</li>
-                                <li>${donatedItem.zipCode}</li>
-                                <li>${donatedItem.phoneNumber}</li>
-                            </ul>
-                        </div>
-
-                        <div class="form-section--column">
-                            <h4>Termin odbioru:</h4>
-                            <ul>
-                                <li>${donatedItem.pickUpDate}</li>
-                                <li>${donatedItem.pickUpTime}</li>
-                                <li>${donatedItem.pickUpComment}</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                </c:forEach>
-
-                <div class="form-group form-group--buttons">
-                    <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="submit" class="btn">Potwierdzam</button>
-                </div>
             </div>
-        </form>
+        </form:form>
         <!-- STEP 3 -->
 
         <%--    STEP 4--%>
@@ -283,61 +233,42 @@
     </div>
 </section>
 
-<div class="form--steps-instructions">
-    <div class="form--steps-container">
-        <h3>Ważne!</h3>
-        <p data-step="1" class="active">
-            Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
-            wiedzieć komu najlepiej je przekazać.
-        </p>
-        <p data-step="2">
-            Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
-            wiedzieć komu najlepiej je przekazać.
-        </p>
-        <p data-step="3">
-            Wybierz jedną, do
-            której trafi Twoja przesyłka.
-        </p>
-        <p data-step="4">Podaj adres oraz termin odbioru rzeczy.</p>
-    </div>
-</div>
-
-    <footer>
+<footer>
     <div class="contact">
-    <h2>Skontaktuj się z nami</h2>
-    <h3>Formularz kontaktowy</h3>
-    <form class="form--contact">
-    <div class="form-group form-group--50">
-    <input type="text" name="name" placeholder="Imię"/>
-    </div>
-    <div class="form-group form-group--50">
-    <input type="text" name="surname" placeholder="Nazwisko"/>
-    </div>
+        <h2>Skontaktuj się z nami</h2>
+        <h3>Formularz kontaktowy</h3>
+        <form class="form--contact">
+            <div class="form-group form-group--50">
+                <input type="text" name="name" placeholder="Imię"/>
+            </div>
+            <div class="form-group form-group--50">
+                <input type="text" name="surname" placeholder="Nazwisko"/>
+            </div>
 
-    <div class="form-group">
-    <textarea
-    name="message"
-    placeholder="Wiadomość"
-    rows="1"
-    ></textarea>
-    </div>
+            <div class="form-group">
+            <textarea
+                    name="message"
+                    placeholder="Wiadomość"
+                    rows="1"
+            ></textarea>
+            </div>
 
-    <button class="btn" type="submit">Wyślij</button>
-    </form>
+            <button class="btn" type="submit">Wyślij</button>
+        </form>
     </div>
     <div class="bottom-line">
-    <span class="bottom-line--copy">Copyright &copy; 2018</span>
-    <div class="bottom-line--icons">
-    <a href="#" class="btn btn--small"
-    ><img src=" ${pageContext.request.contextPath}/resources/images/icon-facebook.svg"
-    /></a>
-    <a href="#" class="btn btn--small"
-    ><img src="${pageContext.request.contextPath}/resources/images/icon-instagram.svg"
-    /></a>
+        <span class="bottom-line--copy">Copyright &copy; 2018</span>
+        <div class="bottom-line--icons">
+            <a href="#" class="btn btn--small"
+            ><img src=" ${pageContext.request.contextPath}/resources/images/icon-facebook.svg"
+            /></a>
+            <a href="#" class="btn btn--small"
+            ><img src="${pageContext.request.contextPath}/resources/images/icon-instagram.svg"
+            /></a>
+        </div>
     </div>
-    </div>
-    </footer>
+</footer>
 
-    <script src="${pageContext.request.contextPath}/resources/js/app.js"></script>
-    </body>
-    </html>
+<script src="${pageContext.request.contextPath}/resources/js/app.js"></script>
+</body>
+</html>

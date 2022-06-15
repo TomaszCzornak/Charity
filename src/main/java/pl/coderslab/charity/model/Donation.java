@@ -1,5 +1,7 @@
 package pl.coderslab.charity.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -14,14 +16,15 @@ public class Donation {
 
     private Integer quantity;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Category category;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToMany
+    private List<Category> categories;
+    @ManyToOne
     private Institution institution;
 
     private String street;
     private String city;
     private String zipCode;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
     private String pickUpComment;
@@ -51,20 +54,12 @@ public class Donation {
         this.quantity = quantity;
     }
 
-    public Category getCategory() {
-        return category;
+    public List<Category> getCategories() {
+        return categories;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public LocalDate getPickUpDate() {
-        return pickUpDate;
-    }
-
-    public void setPickUpDate(LocalDate pickUpDate) {
-        this.pickUpDate = pickUpDate;
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 
     public Institution getInstitution() {
@@ -99,11 +94,11 @@ public class Donation {
         this.zipCode = zipCode;
     }
 
-    public LocalDate getPickUpdDate() {
+    public LocalDate getPickUpDate() {
         return pickUpDate;
     }
 
-    public void setPickUpdDate(LocalDate pickUpdDate) {
+    public void setPickUpDate(LocalDate pickUpdDate) {
         this.pickUpDate = pickUpdDate;
     }
 
