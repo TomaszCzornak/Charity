@@ -2,11 +2,9 @@ package pl.coderslab.charity.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.charity.model.Category;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.repository.CategoryRepo;
@@ -22,10 +20,12 @@ public class DonationController {
 
     private final DonationRepo donationRepo;
     private final InstitutionRepo institutionRepo;
+    private final CategoryRepo categoryRepo;
 
-    public DonationController(DonationRepo donationRepo, InstitutionRepo institutionRepo) {
+    public DonationController(DonationRepo donationRepo, InstitutionRepo institutionRepo, CategoryRepo categoryRepo) {
         this.donationRepo = donationRepo;
         this.institutionRepo = institutionRepo;
+        this.categoryRepo = categoryRepo;
     }
 
 
